@@ -1,0 +1,97 @@
+Crie um projeto web em Python (Flask) para uma landing page da empresa fictícia ELP Consultoria e Engenharia, especializada em consultoria em engenharia civil com foco em materiais à base cimentícia e fachadas de empreendimentos (obras horizontais, verticais, de grande porte e casas).
+
+O sistema deve:
+
+Utilizar Flask com estrutura de pastas organizada (app.py, templates/, static/).
+
+Ter um arquivo requirements.txt pronto para deploy no Railway.
+
+Servir um HTML responsivo com CSS moderno.
+
+Usar fonte Montserrat ou Roboto e paleta de cores: Azul-escuro #00264d, Branco e Cinza cimento #cccccc.
+
+O layout deve ser limpo, elegante, responsivo e incluir animações leves em botões (hover).
+
+Requisitos da página:
+
+Header fixo
+
+Logo em anexo
+
+Menu com links: Início, Sobre, Serviços, Diferenciais, Contato
+
+Botão destacado à direita: "Solicitar Orçamento"
+
+Seção Hero (Topo)
+
+Imagem de fundo relacionada a fachadas de prédios
+
+Título grande: "Excelência em Consultoria Técnica para Fachadas"
+
+Subtítulo: "Especialistas em sistemas cimentícios e desempenho técnico para obras de todos os portes."
+
+Botão CTA: "Fale com nossos especialistas"
+
+Seção Sobre
+
+Texto explicando missão e atuação da empresa
+
+Destaque: acompanhamento, treinamento e aconselhamento em fachadas
+
+Ícones ilustrativos (qualidade, confiança, experiência)
+
+Seção Serviços
+
+Lista de serviços com ícones:
+
+Acompanhamento Técnico de Obras
+
+Treinamento de Equipes
+
+Vistorias em Fachadas
+
+Consultoria em Manutenção e Restauração
+
+Apoio a Construtoras e Incorporadoras
+
+Seção Diferenciais
+
+Título: "Por que escolher a ELP?"
+
+Lista com ícones:
+
++10 anos de experiência
+
+Especialização em revestimentos cimentícios
+
+Atendimento personalizado
+
+Atuação nacional
+
+Equipe qualificada
+
+Depoimentos (opcional)
+
+2 ou 3 depoimentos de clientes fictícios com nome e foto
+
+Formulário de Contato
+
+Campos: Nome, E-mail, Telefone, Mensagem
+
+Botão: "Solicitar Contato"
+
+Rodapé
+
+Nome da empresa
+
+Links: Política de Privacidade, Termos de Uso
+
+Redes sociais fictícias
+
+Instruções finais:
+
+Gerar todo o código (Flask + HTML + CSS + requirements.txt).
+
+Preparar o projeto para ser rodado localmente com python app.py.
+
+O deploy deve funcionar no Railway sem ajustes adicionais.
