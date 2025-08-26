@@ -1,13 +1,53 @@
 // Main JavaScript file for ELP Consultoria website
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Add page loaded class for transitions
+    document.body.classList.add('loaded');
+    
     // Initialize all functions
     initSmoothScrolling();
     initNavbarScroll();
     initFormValidation();
     initAnimations();
     initFlashMessages();
+    
+    // Add loading states for buttons
+    initButtonLoadingStates();
+    
+    // Initialize parallax effects
+    initParallaxEffects();
 });
+
+// Add button loading states
+function initButtonLoadingStates() {
+    const buttons = document.querySelectorAll('button[type="submit"]');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (this.form && this.form.checkValidity()) {
+                this.innerHTML = '<span class="loading-spinner me-2"></span>Enviando...';
+                this.disabled = true;
+            }
+        });
+    });
+}
+
+// Simple parallax effect for hero section
+function initParallaxEffects() {
+    const heroSection = document.querySelector('.hero-section');
+    
+    if (heroSection) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = heroSection.querySelector('.hero-overlay');
+            
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+    }
+}
 
 // Smooth scrolling for navigation links
 function initSmoothScrolling() {
@@ -128,25 +168,110 @@ function createFlashContainer() {
 
 // Initialize scroll animations
 function initAnimations() {
-    const animatedElements = document.querySelectorAll('.service-card, .feature-card, .differential-card');
+    const animatedElements = document.querySelectorAll('.service-card, .feature-card, .differential-card, .testimonial-card, .stat-card');
     
     const observer = new IntersectionObserver(
         (entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
+                    // Stagger animations for better effect
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                        entry.target.style.transitionDelay = `${index * 0.1}s`;
+                        
+                        // Add specific animation classes
+                        if (entry.target.classList.contains('service-card')) {
+                            entry.target.classList.add('fade-in-up');
+                        } else if (entry.target.classList.contains('feature-card')) {
+                            entry.target.classList.add('fade-in-left');
+                        } else if (entry.target.classList.contains('differential-card')) {
+                            entry.target.classList.add('fade-in-right');
+                        } else {
+                            entry.target.classList.add('fade-in-up');
+                        }
+                    }, index * 100);
                 }
             });
         },
         {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
         }
     );
     
     animatedElements.forEach(element => {
         observer.observe(element);
     });
+    
+    // Animate hero elements
+    animateHeroElements();
+    
+    // Animate icons on hover
+    initIconAnimations();
+    
+    // Add page load animations
+    initPageLoadAnimations();
+}
+
+// Animate hero elements on page load
+function animateHeroElements() {
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroCta = document.querySelector('.hero-cta');
+    
+    if (heroTitle) {
+        setTimeout(() => heroTitle.classList.add('slide-in-top'), 300);
+    }
+    if (heroSubtitle) {
+        setTimeout(() => heroSubtitle.classList.add('fade-in'), 600);
+    }
+    if (heroCta) {
+        setTimeout(() => {
+            heroCta.classList.add('fade-in-up');
+            heroCta.classList.add('bounce-animation');
+        }, 900);
+    }
+}
+
+// Initialize icon animations
+function initIconAnimations() {
+    const icons = document.querySelectorAll('.feature-icon, .service-icon, .differential-icon');
+    
+    icons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.animation = 'pulse 0.6s ease';
+        });
+        
+        icon.addEventListener('animationend', () => {
+            icon.style.animation = '';
+        });
+    });
+}
+
+// Page load animations
+function initPageLoadAnimations() {
+    const navbar = document.querySelector('.custom-navbar');
+    const pageTitle = document.querySelector('.display-4');
+    
+    // Animate navbar
+    if (navbar) {
+        navbar.style.transform = 'translateY(-100%)';
+        navbar.style.transition = 'transform 0.8s ease';
+        setTimeout(() => {
+            navbar.style.transform = 'translateY(0)';
+        }, 100);
+    }
+    
+    // Animate page titles
+    if (pageTitle) {
+        pageTitle.style.opacity = '0';
+        pageTitle.style.transform = 'translateY(30px)';
+        pageTitle.style.transition = 'all 0.8s ease';
+        setTimeout(() => {
+            pageTitle.style.opacity = '1';
+            pageTitle.style.transform = 'translateY(0)';
+        }, 400);
+    }
 }
 
 // Handle flash messages auto-dismiss
