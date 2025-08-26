@@ -417,3 +417,78 @@ html {
 .border-primary {
     border-color: var(--primary-blue) !important;
 }
+
+/* Active navigation link */
+.navbar-nav .nav-link.active {
+    color: var(--cement-gray) !important;
+    font-weight: 600;
+}
+
+/* Statistics Cards */
+.stat-card {
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 3px 15px rgba(0, 38, 77, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 38, 77, 0.08);
+    height: 100%;
+}
+
+/* Contact Info */
+.contact-info {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 38, 77, 0.08);
+    height: fit-content;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-item h5 {
+    margin-bottom: 5px;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.contact-item p {
+    margin-bottom: 0;
+    color: var(--dark-gray);
+}
+
+/* Page Headers */
+.bg-primary {
+    background-color: var(--primary-blue) !important;
+}
+
+/* Accordion Customization */
+.accordion-button {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.accordion-button:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 38, 77, 0.25);
+}

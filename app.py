@@ -14,6 +14,26 @@ def index():
     """Main landing page"""
     return render_template('index.html')
 
+@app.route('/sobre')
+def sobre():
+    """About page"""
+    return render_template('sobre.html')
+
+@app.route('/servicos')
+def servicos():
+    """Services page"""
+    return render_template('servicos.html')
+
+@app.route('/diferenciais')
+def diferenciais():
+    """Differentials page"""
+    return render_template('diferenciais.html')
+
+@app.route('/contato')
+def contato():
+    """Contact page"""
+    return render_template('contato.html')
+
 @app.route('/contact', methods=['POST'])
 def contact():
     """Handle contact form submission"""
@@ -26,12 +46,12 @@ def contact():
         # Basic validation
         if not name or not email or not message:
             flash('Por favor, preencha todos os campos obrigatórios.', 'error')
-            return redirect(url_for('index') + '#contato')
+            return redirect(url_for('contato'))
         
         # Email validation (basic)
         if '@' not in email or '.' not in email:
             flash('Por favor, insira um e-mail válido.', 'error')
-            return redirect(url_for('index') + '#contato')
+            return redirect(url_for('contato'))
         
         # Log the contact form submission
         app.logger.info(f"Contact form submitted - Name: {name}, Email: {email}")
@@ -44,7 +64,7 @@ def contact():
         app.logger.error(f"Error processing contact form: {str(e)}")
         flash('Erro interno. Tente novamente mais tarde.', 'error')
     
-    return redirect(url_for('index') + '#contato')
+    return redirect(url_for('contato'))
 
 @app.errorhandler(404)
 def not_found_error(error):
