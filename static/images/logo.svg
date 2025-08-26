@@ -1,0 +1,27 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="120" height="40" rx="4" fill="#00264d"/>
+  
+  <!-- Letter E -->
+  <rect x="8" y="8" width="3" height="24" fill="white"/>
+  <rect x="8" y="8" width="12" height="3" fill="white"/>
+  <rect x="8" y="18.5" width="10" height="3" fill="white"/>
+  <rect x="8" y="29" width="12" height="3" fill="white"/>
+  
+  <!-- Letter L -->
+  <rect x="28" y="8" width="3" height="24" fill="white"/>
+  <rect x="28" y="29" width="12" height="3" fill="white"/>
+  
+  <!-- Letter P -->
+  <rect x="48" y="8" width="3" height="24" fill="white"/>
+  <rect x="48" y="8" width="10" height="3" fill="white"/>
+  <rect x="48" y="18.5" width="10" height="3" fill="white"/>
+  <rect x="58" y="11" width="3" height="7.5" fill="white"/>
+  
+  <!-- Decorative line -->
+  <rect x="70" y="18" width="2" height="4" fill="#cccccc"/>
+  
+  <!-- Text "Consultoria" -->
+  <text x="76" y="16" font-family="Arial, sans-serif" font-size="6" font-weight="600" fill="white">CONSULTORIA</text>
+  <text x="76" y="26" font-family="Arial, sans-serif" font-size="6" font-weight="600" fill="#cccccc">ENGENHARIA</text>
+</svg>
