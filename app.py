@@ -44,6 +44,16 @@ def contato():
     """Contact page"""
     return render_template('contato.html')
 
+@app.route('/politica-privacidade')
+def politica_privacidade():
+    """Privacy Policy page"""
+    return render_template('politica_privacidade.html')
+
+@app.route('/termos-uso')
+def termos_uso():
+    """Terms of Use page"""
+    return render_template('termos_uso.html')
+
 @app.route('/contact', methods=['POST'])
 def contact():
     """Handle contact form submission"""

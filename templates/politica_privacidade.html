@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Política de Privacidade - ELP Consultoria e Engenharia{% endblock %}
+
+{% block content %}
+    <!-- Page Header -->
+    <section class="py-5 mt-5 bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4 text-white">Política de Privacidade</h1>
+                    <p class="lead">Como tratamos e protegemos seus dados pessoais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="content-card">
+                        <p class="lead">A ELP Consultoria e Engenharia está comprometida com a proteção de seus dados pessoais e transparência no tratamento das informações coletadas.</p>
+                        
+                        <h3>1. Informações Coletadas</h3>
+                        <p>Coletamos apenas as informações essenciais para prestar nossos serviços:</p>
+                        <ul>
+                            <li>Nome e dados de contato (e-mail, telefone)</li>
+                            <li>Informações sobre projetos e necessidades técnicas</li>
+                            <li>Dados de navegação no website (cookies)</li>
+                        </ul>
+
+                        <h3>2. Uso das Informações</h3>
+                        <p>Utilizamos suas informações exclusivamente para:</p>
+                        <ul>
+                            <li>Responder suas solicitações de orçamento</li>
+                            <li>Prestar nossos serviços de consultoria</li>
+                            <li>Melhorar a experiência em nosso website</li>
+                            <li>Enviar informações técnicas relevantes (mediante consentimento)</li>
+                        </ul>
+
+                        <h3>3. Proteção de Dados</h3>
+                        <p>Implementamos medidas de segurança apropriadas para proteger suas informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição.</p>
+
+                        <h3>4. Compartilhamento de Dados</h3>
+                        <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto quando necessário para a prestação de nossos serviços ou exigido por lei.</p>
+
+                        <h3>5. Seus Direitos</h3>
+                        <p>Você tem direito a:</p>
+                        <ul>
+                            <li>Acessar seus dados pessoais</li>
+                            <li>Corrigir informações incorretas</li>
+                            <li>Solicitar a exclusão de seus dados</li>
+                            <li>Revogar consentimentos dados</li>
+                        </ul>
+
+                        <h3>6. Cookies</h3>
+                        <p>Utilizamos cookies para melhorar sua experiência de navegação. Você pode configurar seu navegador para recusar cookies, mas isso pode afetar algumas funcionalidades do site.</p>
+
+                        <h3>7. Contato</h3>
+                        <p>Para dúvidas sobre esta política ou exercer seus direitos, entre em contato conosco através de nossa <a href="{{ url_for('contato') }}">página de contato</a>.</p>
+
+                        <h3>8. Alterações na Política</h3>
+                        <p>Esta política pode ser atualizada periodicamente. A versão mais recente estará sempre disponível nesta página.</p>
+
+                        <p><strong>Última atualização:</strong> Janeiro de 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
