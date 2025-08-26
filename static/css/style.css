@@ -80,7 +80,7 @@ html {
     align-items: center;
     position: relative;
     padding-top: 80px;
-    background-attachment: fixed;
+    z-index: 1;
 }
 
 .hero-overlay {
@@ -90,7 +90,7 @@ html {
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, rgba(0, 38, 77, 0.95) 0%, rgba(0, 38, 77, 0.85) 100%);
-    z-index: 1;
+    z-index: -1;
 }
 
 .hero-title {
@@ -100,7 +100,7 @@ html {
     margin-bottom: 1.5rem;
     line-height: 1.2;
     position: relative;
-    z-index: 3;
+    z-index: 10;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -109,7 +109,7 @@ html {
     color: var(--white);
     margin-bottom: 2rem;
     position: relative;
-    z-index: 3;
+    z-index: 10;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     opacity: 0.95;
 }
@@ -124,7 +124,7 @@ html {
     font-size: 1.1rem;
     transition: all 0.3s ease;
     position: relative;
-    z-index: 3;
+    z-index: 10;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -146,7 +146,18 @@ html {
     color: var(--primary-blue);
     margin-bottom: 1rem;
     position: relative;
-    z-index: 2;
+    z-index: 10;
+}
+
+/* Ensure all content sections are above hero */
+section:not(.hero-section) {
+    position: relative;
+    z-index: 5;
+    background-color: var(--white);
+}
+
+section.bg-light {
+    background-color: #f8f9fa !important;
 }
 
 .section-subtitle {
@@ -521,7 +532,7 @@ body.loaded {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 38, 77, 0.1);
     position: relative;
-    z-index: 2;
+    z-index: 10;
 }
 
 /* Logo specific styles */

@@ -1,0 +1,11 @@
+{
+  "name": "ELP Consultoria Landing Page",
+  "description": "Professional Flask landing page for civil engineering consultancy",
+  "language": "python",
+  "variables": {
+    "SESSION_SECRET": {
+      "description": "Secret key for Flask sessions",
+      "default": "elp-consultoria-secret-key-2024"
+    }
+  }
+}

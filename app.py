@@ -9,6 +9,16 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "elp-consultoria-secret-key-2024")
 
+# Railway deployment configuration
+if os.environ.get('RAILWAY_ENVIRONMENT'):
+    # Production settings for Railway
+    app.config['DEBUG'] = False
+    app.config['ENV'] = 'production'
+else:
+    # Development settings
+    app.config['DEBUG'] = True
+    app.config['ENV'] = 'development'
+
 @app.route('/')
 def index():
     """Main landing page"""
@@ -75,4 +85,6 @@ def internal_error(error):
     return render_template('index.html'), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Get port from environment variable for Railway deployment
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=app.config['DEBUG'])

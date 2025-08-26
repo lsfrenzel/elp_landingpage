@@ -10,6 +10,12 @@ Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
+### Z-Index Management
+- **Hero Section**: z-index: 1 (background layer)
+- **Content Sections**: z-index: 5 (ensures content appears above hero during scroll)
+- **Hero Text Elements**: z-index: 10 (highest priority for visibility)
+- **Navigation Bar**: Fixed positioning with appropriate z-index
+
 ### Frontend Architecture
 - **Single Page Application (SPA)**: Built as a responsive landing page with multiple sections accessible through smooth scrolling navigation
 - **Bootstrap Framework**: Uses Bootstrap 5.3.0 for responsive grid system and components
@@ -55,9 +61,13 @@ Preferred communication style: Simple, everyday language.
 - **OS Module**: Environment variable handling for configuration
 
 ### Deployment Considerations
-- **Railway Platform**: Designed for deployment on Railway with requirements.txt structure
-- **Environment Variables**: Configurable session secrets for production deployment
+- **Railway Platform**: Configured for deployment on Railway with proper configuration files
+  - `Procfile`: Defines the web process command for Railway
+  - `railway.json`: Railway-specific deployment configuration
+  - `runtime.txt`: Specifies Python version for deployment
+- **Environment Variables**: Configurable session secrets and Railway environment detection
 - **Static File Serving**: Flask's built-in static file serving for CSS, JS, and images
+- **Port Configuration**: Dynamic port assignment for Railway deployment
 
 ### Missing Integrations (Potential Future Additions)
 - **Email Service**: Contact form currently logs submissions but doesn't send emails
