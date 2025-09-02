@@ -22,7 +22,7 @@
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                     <div class="intro-content">
                         <h2 class="section-title">Bem-vindos à ELP Consultoria e Engenharia</h2>
                         <p class="lead">Especialistas em consultoria técnica para o setor da construção civil, com foco em materiais à base cimentícia e sistemas de fachadas.</p>
@@ -41,9 +41,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="text-center">
-                        <i class="fas fa-building text-primary" style="font-size: 8rem; opacity: 0.1;"></i>
+                <div class="col-lg-6">
+                    <div class="video-container">
+                        <video 
+                            controls
+                            poster="{{ url_for('static', filename='images/elp_video_1756835951588.png') }}"
+                            class="img-fluid rounded shadow"
+                            style="width: 100%; max-height: 400px;">
+                            <source src="{{ url_for('static', filename='elp_1756835575256.mp4') }}" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
+                        </video>
                     </div>
                 </div>
             </div>
