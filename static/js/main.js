@@ -168,7 +168,7 @@ function createFlashContainer() {
 
 // Initialize scroll animations
 function initAnimations() {
-    const animatedElements = document.querySelectorAll('.service-card, .feature-card, .differential-card, .testimonial-card, .stat-card');
+    const animatedElements = document.querySelectorAll('.service-card, .feature-card, .differential-card, .testimonial-card, .stat-card, .client-card');
     
     const observer = new IntersectionObserver(
         (entries) => {
