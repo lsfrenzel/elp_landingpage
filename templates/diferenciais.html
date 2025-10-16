@@ -1,156 +1,237 @@
 {% extends "base.html" %}
 
-{% block title %}Diferenciais - ELP Consultoria e Engenharia{% endblock %}
+{% block title %}Diferenciais - ELP Engenharia e Consultoria{% endblock %}
 
 {% block content %}
-    <!-- Page Header -->
-    <section class="py-5 mt-5 bg-primary text-white">
+    <!-- Page Header with Gradient -->
+    <section class="differentials-hero">
+        <div class="hero-gradient-overlay"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="display-4 text-white">Por que escolher a ELP?</h1>
-                    <p class="lead">Conheça os diferenciais que nos tornam únicos no mercado</p>
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 text-white mb-4 hero-title-animated">Por que escolher a ELP?</h1>
+                    <p class="lead text-white mb-0 hero-subtitle-animated">Conheça os diferenciais que nos tornam únicos no mercado de consultoria em sistemas de revestimentos</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Differentials Section -->
-    <section class="py-5">
+    <!-- Differentials Section with Enhanced Cards -->
+    <section class="py-5 differentials-main-section">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="differential-card text-center">
-                        <i class="fas fa-calendar-alt differential-icon"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="differential-card-enhanced text-center">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-calendar-alt differential-icon-enhanced"></i>
+                        </div>
                         <h4>+ 15 anos de experiência</h4>
                         <p>na atuação com consultoria em revestimentos aderidos.</p>
+                        <div class="card-corner-decoration"></div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="differential-card text-center">
-                        <i class="fas fa-user-tie differential-icon"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="differential-card-enhanced text-center">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-user-tie differential-icon-enhanced"></i>
+                        </div>
                         <h4>Atendimento personalizado</h4>
                         <p>cada projeto recebe atenção individual e detalhamento customizado.</p>
+                        <div class="card-corner-decoration"></div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="differential-card text-center">
-                        <i class="fas fa-map-marked-alt differential-icon"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="differential-card-enhanced text-center">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-map-marked-alt differential-icon-enhanced"></i>
+                        </div>
                         <h4>Atuação nacional</h4>
                         <p>Prestamos serviços em todo o território nacional, levando nossa expertise e qualidade técnica a qualquer lugar do Brasil.</p>
+                        <div class="card-corner-decoration"></div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="differential-card text-center">
-                        <i class="fas fa-graduation-cap differential-icon"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="differential-card-enhanced text-center">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-graduation-cap differential-icon-enhanced"></i>
+                        </div>
                         <h4>Equipe qualificada</h4>
                         <p>Profissionais com formação técnica sólida e atualização constante em normas, tecnologias e melhores práticas do mercado.</p>
+                        <div class="card-corner-decoration"></div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="differential-card text-center">
-                        <i class="fas fa-clock differential-icon"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="differential-card-enhanced text-center">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-clock differential-icon-enhanced"></i>
+                        </div>
                         <h4>Agilidade e eficiência</h4>
                         <p>Processos otimizados para entrega rápida sem comprometer a qualidade, garantindo prazos cumpridos e resultados excepcionais.</p>
+                        <div class="card-corner-decoration"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="differential-card-enhanced text-center">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-shield-alt differential-icon-enhanced"></i>
+                        </div>
+                        <h4>Compromisso com qualidade</h4>
+                        <p>Seguimos rigorosamente as normas técnicas e boas práticas, garantindo soluções confiáveis e duradouras.</p>
+                        <div class="card-corner-decoration"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Clients Section -->
-    <section class="clients-section">
+    <!-- Clients Section with Enhanced Design -->
+    <section class="clients-section-enhanced">
         <div class="container">
-            <div class="text-center mb-4">
-                <h2 class="section-title">Principais Clientes</h2>
-                <p class="section-subtitle">Empresas que confiam em nosso trabalho</p>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title-enhanced">Principais Clientes</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle-enhanced">Empresas que confiam em nosso trabalho</p>
             </div>
-            <div class="clients-grid">
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://ryazbek.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Ryazbek</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://trisul-sa.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Trisul</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.even.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Even</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.tecnisa.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Tecnisa</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://mvconstrucoes.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">MV Construções</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://sincoengenharia.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Sinco Engenharia</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.setin.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Setin</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="http://www.acry.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Acry</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.dialogo.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Diálogo</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.mpd.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">MPD</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://msbsanchez.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">MSB Sanchez</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.nacionalglobal.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Nacional Global</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.reconeng.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Recon Engenharia</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://construtoratrovata.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Construtora Trovata</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://niss.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Niss</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.ideazarvos.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Idea Zarvos</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.teixeiraduarteconstrucao.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Teixeira Duarte</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://www.mdgp.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">MDGP</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://caucaso.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Caucaso</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://graalengenharia.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Graal Engenharia</a>
-                </div>
-                <div class="client-card">
-                    <i class="fas fa-building client-icon"></i>
-                    <a href="https://sulplanincorporadora.com.br/" target="_blank" rel="noopener noreferrer" class="client-name">Sulplan Incorporadora</a>
-                </div>
+            <div class="clients-grid-enhanced">
+                <a href="https://ryazbek.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Ryazbek</span>
+                </a>
+                <a href="https://trisul-sa.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Trisul</span>
+                </a>
+                <a href="https://www.even.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Even</span>
+                </a>
+                <a href="https://www.tecnisa.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Tecnisa</span>
+                </a>
+                <a href="https://mvconstrucoes.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">MV Construções</span>
+                </a>
+                <a href="https://sincoengenharia.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Sinco Engenharia</span>
+                </a>
+                <a href="https://www.setin.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Setin</span>
+                </a>
+                <a href="http://www.acry.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="450">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Acry</span>
+                </a>
+                <a href="https://www.dialogo.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Diálogo</span>
+                </a>
+                <a href="https://www.mpd.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="550">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">MPD</span>
+                </a>
+                <a href="https://msbsanchez.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">MSB Sanchez</span>
+                </a>
+                <a href="https://www.nacionalglobal.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="650">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Nacional Global</span>
+                </a>
+                <a href="https://www.reconeng.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Recon Engenharia</span>
+                </a>
+                <a href="https://construtoratrovata.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="750">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Construtora Trovata</span>
+                </a>
+                <a href="https://niss.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Niss</span>
+                </a>
+                <a href="https://www.ideazarvos.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="850">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Idea Zarvos</span>
+                </a>
+                <a href="https://www.teixeiraduarteconstrucao.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="900">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Teixeira Duarte</span>
+                </a>
+                <a href="https://www.mdgp.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="950">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">MDGP</span>
+                </a>
+                <a href="https://caucaso.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Caucaso</span>
+                </a>
+                <a href="https://graalengenharia.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="1050">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Graal Engenharia</span>
+                </a>
+                <a href="https://sulplanincorporadora.com.br/" target="_blank" rel="noopener noreferrer" class="client-card-enhanced" data-aos="zoom-in" data-aos-delay="1100">
+                    <div class="client-icon-bg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="client-name">Sulplan Incorporadora</span>
+                </a>
             </div>
         </div>
     </section>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
 {% endblock %}
