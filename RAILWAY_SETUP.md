@@ -1,5 +1,14 @@
 # Configuração para Deploy no Railway
 
+## Arquivos de Configuração
+
+O projeto já está configurado com os seguintes arquivos necessários para o Railway:
+
+- **requirements.txt**: Lista de dependências Python que o Railway instalará automaticamente
+- **runtime.txt**: Especifica a versão do Python (3.11.0)
+- **Procfile**: Define o comando para iniciar o servidor (gunicorn)
+- **railway.json**: Configurações específicas do Railway
+
 ## Variáveis de Ambiente Necessárias
 
 Para que o projeto funcione corretamente no Railway, configure as seguintes variáveis de ambiente:
