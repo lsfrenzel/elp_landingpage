@@ -4,6 +4,13 @@
 
 This is a Flask-based landing page for ELP Consultoria e Engenharia, a fictional civil engineering consultancy specializing in cement-based materials and facade systems. The application serves as a professional, responsive website showcasing the company's services, expertise, and contact information. The system is designed as a single-page application with multiple sections including hero, about, services, differentials, and contact forms.
 
+## Recent Changes (October 28, 2025)
+
+- **Resend Email Integration**: Configured contact form to send emails via Resend API to comercial@elpconsultoria.eng.br
+- **Railway Compatibility**: Updated email integration to support both Replit (via connectors) and Railway (via environment variables)
+- **Security Enhancement**: Enforced SESSION_SECRET environment variable requirement for production security
+- **Documentation**: Created RAILWAY_SETUP.md with deployment instructions and environment variable configuration guide
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
@@ -69,8 +76,17 @@ Preferred communication style: Simple, everyday language.
 - **Static File Serving**: Flask's built-in static file serving for CSS, JS, and images
 - **Port Configuration**: Dynamic port assignment for Railway deployment
 
+### Email Integration
+- **Resend API**: Integrated for transactional email delivery from contact form
+- **Environment-Based Configuration**: Compatible with both Replit (connectors) and Railway (env vars)
+- **Required Environment Variables**:
+  - `RESEND_API_KEY`: API key from Resend service
+  - `RESEND_FROM_EMAIL`: Optional sender email (defaults to onboarding@resend.dev)
+  - `SESSION_SECRET`: Required for Flask session security
+- **Contact Email Destination**: comercial@elpconsultoria.eng.br
+- **Error Handling**: Graceful fallback with user-friendly error messages
+
 ### Missing Integrations (Potential Future Additions)
-- **Email Service**: Contact form currently logs submissions but doesn't send emails
 - **Database**: No persistent storage implemented for contact submissions
 - **Analytics**: No web analytics integration present
 - **Content Management**: Static content with no CMS integration
