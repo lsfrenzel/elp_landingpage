@@ -1,106 +1,178 @@
 # Configuração do Railway para ELP Consultoria
 
+## Arquivos de Configuração
+
+O projeto já está configurado com os seguintes arquivos necessários para o Railway:
+
+- ✅ `requirements.txt` - Dependências Python (incluindo gunicorn)
+- ✅ `railway.json` - Configuração de build e deploy
+- ✅ `Procfile` - Comando de inicialização
+- ✅ `runtime.txt` - Versão do Python (3.11.0)
+
+---
+
 ## Variáveis de Ambiente Necessárias
 
-Para que o projeto funcione corretamente no Railway, você precisa configurar as seguintes variáveis de ambiente:
+Configure as seguintes variáveis no Railway (Settings → Variables):
 
-### 1. SESSION_SECRET (Obrigatório)
-**Descrição**: Chave secreta para gerenciar sessões do Flask de forma segura.
-
-**Como gerar**:
-```bash
-python -c "import secrets; print(secrets.token_hex(32))"
+### 1. SESSION_SECRET ✅ (Já configurada)
+```
+wI5igJ7HyH1FDE7fv9qvKGFN7ngPJUkNVE_HPhe7Ua-CT4MscKGs8GlGHne1wTTI67QDReFAyqNhsZl6oxM0dg
 ```
 
-**Onde configurar no Railway**:
-1. Acesse o projeto no Railway
-2. Vá em "Variables"
-3. Adicione a variável:
-   - Nome: `SESSION_SECRET`
-   - Valor: Cole a chave gerada acima
-
----
-
-### 2. RESEND_API_KEY (Obrigatório para emails)
-**Descrição**: Chave da API do Resend para envio de emails do formulário de contato.
-
-**Como obter**:
+### 2. RESEND_API_KEY (Obrigatório)
+**Como obter:**
 1. Acesse [resend.com](https://resend.com)
-2. Crie uma conta ou faça login
-3. Vá em "API Keys"
-4. Clique em "Create API Key"
-5. Copie a chave gerada
+2. Faça login ou crie uma conta
+3. Vá em "API Keys" → "Create API Key"
+4. Copie a chave gerada
 
-**Onde configurar no Railway**:
-1. Acesse o projeto no Railway
-2. Vá em "Variables"
-3. Adicione a variável:
-   - Nome: `RESEND_API_KEY`
-   - Valor: Cole a chave da API do Resend
+**No Railway:**
+- Nome: `RESEND_API_KEY`
+- Valor: Cole a chave da API
 
----
-
-### 3. RESEND_FROM_EMAIL (Recomendado)
-**Descrição**: Email remetente para os emails enviados pelo sistema.
-
-**Valor recomendado**: 
+### 3. RESEND_FROM_EMAIL (Opcional, mas recomendado)
+**Valores possíveis:**
 - Para testes: `onboarding@resend.dev`
-- Para produção: Seu domínio verificado no Resend (ex: `contato@elpconsultoria.eng.br`)
+- Para produção: `contato@elpconsultoria.eng.br` (após verificar domínio no Resend)
 
-**Como configurar domínio no Resend**:
+**No Railway:**
+- Nome: `RESEND_FROM_EMAIL`
+- Valor: `onboarding@resend.dev` (ou seu email verificado)
+
+### 4. PORT (Automático)
+O Railway define automaticamente a variável `PORT`. **Não é necessário configurar.**
+
+---
+
+## Passo a Passo para Deploy
+
+### 1. Preparar o Repositório
+Faça commit e push de todos os arquivos para o GitHub:
+
+```bash
+git add .
+git commit -m "Configuração para Railway"
+git push origin main
+```
+
+### 2. Criar Projeto no Railway
+
+1. Acesse [railway.app](https://railway.app)
+2. Faça login
+3. Clique em "New Project"
+4. Escolha "Deploy from GitHub repo"
+5. Selecione seu repositório
+
+### 3. Configurar Variáveis de Ambiente
+
+No painel do Railway:
+1. Vá em "Variables"
+2. Adicione as variáveis:
+   - `SESSION_SECRET`: wI5igJ7HyH1FDE7fv9qvKGFN7ngPJUkNVE_HPhe7Ua-CT4MscKGs8GlGHne1wTTI67QDReFAyqNhsZl6oxM0dg
+   - `RESEND_API_KEY`: [sua chave do Resend]
+   - `RESEND_FROM_EMAIL`: onboarding@resend.dev
+
+### 4. Deploy Automático
+
+O Railway vai:
+1. Detectar que é um projeto Python (através do `requirements.txt`)
+2. Instalar as dependências automaticamente
+3. Executar o comando do `Procfile` ou `railway.json`
+4. Seu site estará no ar! 🚀
+
+---
+
+## Verificação Pós-Deploy
+
+Após o deploy bem-sucedido:
+
+1. ✅ Acesse a URL fornecida pelo Railway
+2. ✅ Navegue até a página de Contato
+3. ✅ Preencha e envie o formulário
+4. ✅ Verifique se o email chegou em comercial@elpconsultoria.eng.br
+
+---
+
+## Logs e Troubleshooting
+
+### Visualizar Logs no Railway
+1. No painel do projeto, vá em "Deployments"
+2. Clique no deployment ativo
+3. Vá em "View Logs"
+
+### Problemas Comuns
+
+#### 1. "gunicorn: command not found" ❌ RESOLVIDO
+- **Causa:** requirements.txt não foi processado corretamente
+- **Solução:** Arquivo já corrigido! Faça redeploy.
+
+#### 2. Email não está sendo enviado
+- Verifique se `RESEND_API_KEY` está configurada
+- Confirme que a chave é válida no painel do Resend
+- Veja os logs para mensagens de erro específicas
+
+#### 3. Erro 500 ao acessar o site
+- Verifique se `SESSION_SECRET` está configurada
+- Veja os logs do Railway para detalhes do erro
+
+---
+
+## Domínio Customizado (Opcional)
+
+Para usar seu próprio domínio:
+
+1. No Railway, vá em "Settings" → "Domains"
+2. Clique em "Custom Domain"
+3. Digite seu domínio (ex: elpconsultoria.eng.br)
+4. Configure os registros DNS conforme instruções
+5. Aguarde a propagação do DNS (até 48h)
+
+---
+
+## Email com Domínio Próprio (Produção)
+
+Para usar email profissional no Resend:
+
 1. No painel do Resend, vá em "Domains"
-2. Adicione seu domínio (elpconsultoria.eng.br)
-3. Configure os registros DNS conforme instruções
-4. Aguarde a verificação
-
-**Onde configurar no Railway**:
-1. Acesse o projeto no Railway
-2. Vá em "Variables"
-3. Adicione a variável:
-   - Nome: `RESEND_FROM_EMAIL`
-   - Valor: `onboarding@resend.dev` (para testes) ou `contato@elpconsultoria.eng.br` (para produção)
+2. Clique em "Add Domain"
+3. Digite: `elpconsultoria.eng.br`
+4. Configure os registros DNS (SPF, DKIM, DMARC)
+5. Aguarde verificação
+6. Atualize `RESEND_FROM_EMAIL` no Railway para: `contato@elpconsultoria.eng.br`
 
 ---
 
-## Checklist de Configuração
+## Checklist Final
 
-- [ ] Gerar e configurar `SESSION_SECRET`
-- [ ] Criar conta no Resend.com
-- [ ] Obter `RESEND_API_KEY`
-- [ ] Configurar `RESEND_FROM_EMAIL`
-- [ ] (Opcional) Verificar domínio no Resend para produção
-- [ ] Fazer deploy no Railway
-- [ ] Testar formulário de contato
+Antes de considerar o deploy completo:
 
----
-
-## Verificação
-
-Após configurar as variáveis:
-1. Faça um novo deploy no Railway
-2. Acesse a página de Contato
-3. Preencha e envie o formulário
-4. Verifique se o email foi enviado para comercial@elpconsultoria.eng.br
-
----
-
-## Troubleshooting
-
-### Email não está sendo enviado
-1. Verifique se as variáveis estão configuradas corretamente no Railway
-2. Confirme que a `RESEND_API_KEY` é válida
-3. Verifique os logs do Railway para mensagens de erro
-4. Se usar domínio próprio, confirme que ele está verificado no Resend
-
-### Botão fica em "Enviando..."
-- Isso indica que há um erro no servidor
-- Verifique os logs do Railway
-- Provavelmente a `RESEND_API_KEY` está faltando ou inválida
+- [x] Código commitado e pushed para GitHub
+- [ ] Projeto criado no Railway
+- [ ] Variável `SESSION_SECRET` configurada
+- [ ] Variável `RESEND_API_KEY` configurada
+- [ ] Variável `RESEND_FROM_EMAIL` configurada
+- [ ] Deploy bem-sucedido
+- [ ] Site acessível via URL do Railway
+- [ ] Formulário de contato testado e funcionando
+- [ ] Email recebido em comercial@elpconsultoria.eng.br
 
 ---
 
 ## Suporte
 
-Para mais informações:
-- Documentação do Resend: https://resend.com/docs
-- Documentação do Railway: https://docs.railway.app
+- **Railway Docs:** https://docs.railway.app
+- **Resend Docs:** https://resend.com/docs
+- **Flask Docs:** https://flask.palletsprojects.com
+
+---
+
+## Resumo das Correções Aplicadas
+
+✅ Limpeza do `requirements.txt` (removidas duplicatas)  
+✅ Atualização do `railway.json` (configuração explícita do builder)  
+✅ Código Python compatível com Railway e Replit  
+✅ Formulário de contato funcionando com Resend  
+✅ Tratamento de erros e mensagens ao usuário
+
+**Status:** Pronto para deploy! 🚀
