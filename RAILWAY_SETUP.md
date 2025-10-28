@@ -7,7 +7,9 @@ O projeto já está configurado com os seguintes arquivos necessários para o Ra
 - **requirements.txt**: Lista de dependências Python que o Railway instalará automaticamente
 - **runtime.txt**: Especifica a versão do Python (3.11.0)
 - **Procfile**: Define o comando para iniciar o servidor (gunicorn)
-- **railway.json**: Configurações específicas do Railway
+- **railway.json**: Configurações específicas do Railway com comando de build
+- **nixpacks.toml**: Configuração do Nixpacks para instalação correta das dependências
+- **.railwayignore**: Arquivos que devem ser ignorados no deploy
 
 ## Variáveis de Ambiente Necessárias
 
@@ -73,8 +75,18 @@ Após configurar as variáveis, o formulário de contato deve:
 
 ## Troubleshooting
 
+### Erro: "gunicorn: command not found" ou "502 Bad Gateway"
+**Causa**: O Railway não está instalando as dependências corretamente.
+
+**Solução**:
+1. Verifique se o arquivo `requirements.txt` existe na raiz do projeto
+2. Verifique se o arquivo `nixpacks.toml` existe na raiz do projeto
+3. No Railway, vá em Settings → Build e force um novo deploy
+4. Se o problema persistir, tente limpar o cache:
+   - Settings → Redeploy → Clear build cache and redeploy
+
 ### Erro: "SESSION_SECRET environment variable must be set"
-- Adicione a variável SESSION_SECRET no Railway
+- Adicione a variável SESSION_SECRET no Railway (veja seção acima)
 
 ### Erro: "RESEND_API_KEY environment variable not found"
 - Adicione a variável RESEND_API_KEY no Railway com sua chave do Resend
@@ -83,3 +95,13 @@ Após configurar as variáveis, o formulário de contato deve:
 - Verifique se a RESEND_API_KEY está correta
 - Verifique os logs do Railway para mensagens de erro
 - Confirme que sua conta Resend está ativa
+
+### Deploy não funciona
+1. Verifique se todos os arquivos de configuração estão presentes:
+   - requirements.txt
+   - runtime.txt
+   - Procfile
+   - railway.json
+   - nixpacks.toml
+2. Verifique se todas as variáveis de ambiente estão configuradas
+3. Consulte os logs de build no Railway para ver mensagens de erro específicas

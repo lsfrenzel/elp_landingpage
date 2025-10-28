@@ -1,0 +1,10 @@
+.replit
+replit.nix
+.config/
+.upm/
+.cache/
+__pycache__/
+*.pyc
+.local/
+attached_assets/
+uv.lock
