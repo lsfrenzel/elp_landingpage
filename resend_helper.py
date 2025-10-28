@@ -23,7 +23,7 @@ def get_resend_credentials():
     hostname = os.environ.get("REPLIT_CONNECTORS_HOSTNAME")
     
     if not hostname:
-        raise Exception("RESEND_API_KEY environment variable not found. Please configure Resend credentials.")
+        raise Exception("RESEND_API_KEY environment variable not found. Please configure Resend credentials in Railway.")
     
     # Get the authentication token for Replit
     x_replit_token = None
@@ -33,17 +33,23 @@ def get_resend_credentials():
         x_replit_token = f"depl {os.environ.get('WEB_REPL_RENEWAL')}"
     
     if not x_replit_token:
-        raise Exception("RESEND_API_KEY not found and Replit connector authentication failed")
+        raise Exception("RESEND_API_KEY not found. Please configure Resend credentials in Railway or connect Resend in Replit.")
     
     # Fetch connection settings from Replit Connectors
     try:
-        url = f"https://{hostname}/api/v2/connection?include_secrets=true&connector_names=resend"
+        # Build URL with proper parameters
+        params = {
+            "include_secrets": "true",
+            "connector_names": "resend"
+        }
+        url = f"https://{hostname}/api/v2/connection"
+        
         headers = {
             "Accept": "application/json",
-            "X_REPLIT_TOKEN": x_replit_token
+            "X_REPLIT_TOKEN": x_replit_token  # Note: requests will convert to X-REPLIT-TOKEN in HTTP
         }
         
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, params=params)
         response.raise_for_status()
         data = response.json()
         
