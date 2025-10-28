@@ -7,9 +7,9 @@ O projeto já está configurado com os seguintes arquivos necessários para o Ra
 - **requirements.txt**: Lista de dependências Python que o Railway instalará automaticamente
 - **runtime.txt**: Especifica a versão do Python (3.11.0)
 - **Procfile**: Define o comando para iniciar o servidor (gunicorn)
-- **railway.json**: Configurações específicas do Railway com comando de build
-- **nixpacks.toml**: Configuração do Nixpacks para instalação correta das dependências
-- **.railwayignore**: Arquivos que devem ser ignorados no deploy
+- **railway.json**: Configurações específicas do Railway
+- **nixpacks.toml**: Configuração do Nixpacks para instalação correta das dependências Python
+- **.nixpacks**: Define Python como provider principal (evita conflitos com detecção automática)
 
 ## Variáveis de Ambiente Necessárias
 
