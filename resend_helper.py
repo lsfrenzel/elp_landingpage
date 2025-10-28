@@ -79,10 +79,16 @@ def send_email(to_email, subject, html_content, from_name=None):
     Returns:
         Dictionary with response data or raises an exception on failure
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    
     try:
+        logger.info("Getting Resend credentials...")
         credentials = get_resend_credentials()
         api_key = credentials["api_key"]
         from_email = credentials["from_email"]
+        
+        logger.info(f"Resend credentials obtained. From email: {from_email}")
         
         # Add sender name if provided
         if from_name:
@@ -98,6 +104,8 @@ def send_email(to_email, subject, html_content, from_name=None):
             "html": html_content
         }
         
+        logger.info(f"Sending email to: {to_email}, from: {from_address}, subject: {subject}")
+        
         # Send the email via Resend API
         headers = {
             "Authorization": f"Bearer {api_key}",
@@ -107,11 +115,29 @@ def send_email(to_email, subject, html_content, from_name=None):
         response = requests.post(
             "https://api.resend.com/emails",
             headers=headers,
-            data=json.dumps(email_data)
+            data=json.dumps(email_data),
+            timeout=30
         )
         
-        response.raise_for_status()
-        return response.json()
+        logger.info(f"Resend API response status: {response.status_code}")
+        logger.info(f"Resend API response body: {response.text}")
         
+        # Check for errors
+        if response.status_code != 200:
+            error_message = f"Resend API error - Status {response.status_code}: {response.text}"
+            logger.error(error_message)
+            raise Exception(error_message)
+        
+        response.raise_for_status()
+        result = response.json()
+        logger.info(f"Email sent successfully! Response: {result}")
+        return result
+        
+    except requests.exceptions.RequestException as req_error:
+        error_msg = f"Request error sending email: {str(req_error)}"
+        logger.error(error_msg)
+        raise Exception(error_msg)
     except Exception as e:
-        raise Exception(f"Failed to send email: {str(e)}")
+        error_msg = f"Failed to send email: {str(e)}"
+        logger.error(error_msg)
+        raise Exception(error_msg)
