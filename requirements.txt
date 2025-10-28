@@ -5,3 +5,15 @@ psycopg2-binary==2.9.10
 requests==2.31.0
 email-validator==2.3.0
 resend==1.0.0
+email_validator
+flask
+flask-sqlalchemy
+gunicorn
+psycopg2-binary
+email-validator==2.3.0
+Flask==3.1.2
+Flask-SQLAlchemy==3.1.1
+gunicorn==23.0.0
+psycopg2-binary==2.9.10
+requests==2.31.0
+resend==1.0.0
