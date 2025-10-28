@@ -105,6 +105,13 @@ function initFormValidation() {
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
+        // Reset button state on page load (in case of back button or redirect)
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Solicitar Contato';
+        }
+        
         contactForm.addEventListener('submit', function(e) {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -124,9 +131,16 @@ function initFormValidation() {
             }
             
             // Show loading state
-            const submitButton = contactForm.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
+            
+            // Reset button after timeout (fallback in case of issues)
+            setTimeout(() => {
+                if (submitButton.disabled) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Solicitar Contato';
+                }
+            }, 10000); // 10 seconds timeout
         });
     }
 }
