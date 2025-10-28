@@ -20,16 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add button loading states
 function initButtonLoadingStates() {
-    const buttons = document.querySelectorAll('button[type="submit"]');
-    
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            if (this.form && this.form.checkValidity()) {
-                this.innerHTML = '<span class="loading-spinner me-2"></span>Enviando...';
-                this.disabled = true;
-            }
-        });
-    });
+    // Removed - was preventing form submission
+    // Forms now submit normally without JavaScript interference
 }
 
 // Simple parallax effect for hero section
@@ -130,17 +122,9 @@ function initFormValidation() {
                 return;
             }
             
-            // Show loading state
-            submitButton.disabled = true;
+            // Show loading state - but don't prevent form submission
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
-            
-            // Reset button after timeout (fallback in case of issues)
-            setTimeout(() => {
-                if (submitButton.disabled) {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Solicitar Contato';
-                }
-            }, 10000); // 10 seconds timeout
+            // Don't disable the button - let the form submit normally
         });
     }
 }
