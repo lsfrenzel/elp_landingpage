@@ -5,12 +5,27 @@ import json
 
 def get_resend_credentials():
     """
-    Fetch Resend API credentials from Replit Connectors.
+    Fetch Resend API credentials from environment variables or Replit Connectors.
+    Compatible with both Railway and Replit deployments.
     Returns a dictionary with api_key and from_email.
     """
+    # First, try standard environment variables (Railway, production, etc.)
+    api_key = os.environ.get("RESEND_API_KEY")
+    from_email = os.environ.get("RESEND_FROM_EMAIL", "onboarding@resend.dev")
+    
+    if api_key:
+        return {
+            "api_key": api_key,
+            "from_email": from_email
+        }
+    
+    # Fallback to Replit Connectors (development environment)
     hostname = os.environ.get("REPLIT_CONNECTORS_HOSTNAME")
     
-    # Get the authentication token
+    if not hostname:
+        raise Exception("RESEND_API_KEY environment variable not found. Please configure Resend credentials.")
+    
+    # Get the authentication token for Replit
     x_replit_token = None
     if os.environ.get("REPL_IDENTITY"):
         x_replit_token = f"repl {os.environ.get('REPL_IDENTITY')}"
@@ -18,28 +33,31 @@ def get_resend_credentials():
         x_replit_token = f"depl {os.environ.get('WEB_REPL_RENEWAL')}"
     
     if not x_replit_token:
-        raise Exception("X_REPLIT_TOKEN not found for repl/depl")
+        raise Exception("RESEND_API_KEY not found and Replit connector authentication failed")
     
-    # Fetch connection settings
-    url = f"https://{hostname}/api/v2/connection?include_secrets=true&connector_names=resend"
-    headers = {
-        "Accept": "application/json",
-        "X_REPLIT_TOKEN": x_replit_token
-    }
-    
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    data = response.json()
-    
-    connection_settings = data.get("items", [None])[0]
-    
-    if not connection_settings or not connection_settings.get("settings", {}).get("api_key"):
-        raise Exception("Resend not connected")
-    
-    return {
-        "api_key": connection_settings["settings"]["api_key"],
-        "from_email": connection_settings["settings"].get("from_email", "onboarding@resend.dev")
-    }
+    # Fetch connection settings from Replit Connectors
+    try:
+        url = f"https://{hostname}/api/v2/connection?include_secrets=true&connector_names=resend"
+        headers = {
+            "Accept": "application/json",
+            "X_REPLIT_TOKEN": x_replit_token
+        }
+        
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        
+        connection_settings = data.get("items", [None])[0]
+        
+        if not connection_settings or not connection_settings.get("settings", {}).get("api_key"):
+            raise Exception("Resend not connected via Replit Connectors")
+        
+        return {
+            "api_key": connection_settings["settings"]["api_key"],
+            "from_email": connection_settings["settings"].get("from_email", "onboarding@resend.dev")
+        }
+    except Exception as e:
+        raise Exception(f"Failed to get Resend credentials: {str(e)}")
 
 
 def send_email(to_email, subject, html_content, from_name=None):

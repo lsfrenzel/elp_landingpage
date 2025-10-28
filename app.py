@@ -7,7 +7,10 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Create the Flask app
 app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET", "elp-consultoria-secret-key-2024")
+app.secret_key = os.environ.get("SESSION_SECRET")
+
+if not app.secret_key:
+    raise RuntimeError("SESSION_SECRET environment variable must be set for security")
 
 # Railway deployment configuration
 if os.environ.get('RAILWAY_ENVIRONMENT'):
@@ -76,9 +79,35 @@ def contact():
         # Log the contact form submission
         app.logger.info(f"Contact form submitted - Name: {name}, Email: {email}")
         
-        # In a real application, you would save to database or send email here
-        # For now, we'll just show a success message
-        flash('Obrigado pelo seu contato! Retornaremos em breve.', 'success')
+        # Send email via Resend
+        try:
+            from resend_helper import send_email
+            
+            # Format the email content
+            phone_info = f"<p><strong>Telefone:</strong> {phone}</p>" if phone else ""
+            html_content = f"""
+            <h2>Novo Contato - ELP Consultoria e Engenharia</h2>
+            <p><strong>Nome:</strong> {name}</p>
+            <p><strong>E-mail:</strong> {email}</p>
+            {phone_info}
+            <p><strong>Mensagem:</strong></p>
+            <p>{message.replace(chr(10), '<br>')}</p>
+            """
+            
+            # Send the email
+            send_email(
+                to_email="comercial@elpconsultoria.eng.br",
+                subject=f"Novo Contato - {name}",
+                html_content=html_content,
+                from_name="ELP Consultoria - Website"
+            )
+            
+            app.logger.info(f"Contact email sent successfully to comercial@elpconsultoria.eng.br")
+            flash('Obrigado pelo seu contato! Retornaremos em breve.', 'success')
+            
+        except Exception as email_error:
+            app.logger.error(f"Error sending contact email: {str(email_error)}")
+            flash('Mensagem recebida, mas houve um problema ao enviar o e-mail. Retornaremos em breve.', 'warning')
         
     except Exception as e:
         app.logger.error(f"Error processing contact form: {str(e)}")
